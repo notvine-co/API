@@ -1,6 +1,7 @@
 package dev.ianrich.kynos.web.construct;
 
 import dev.ianrich.kynos.Kynos;
+import dev.ianrich.kynos.util.UrlUtils;
 import org.json.JSONObject;
 import rawhttp.core.RawHttp;
 import rawhttp.core.RawHttpRequest;
@@ -8,8 +9,10 @@ import rawhttp.core.body.BodyReader;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.Optional;
 
 public class Request {
@@ -61,6 +64,16 @@ public class Request {
     }
 
     public boolean isAuthorized() {
-        return getJsonRequest().has("authorization") && getJsonRequest().getString("authorization").equals(Kynos.mainConfig.getString("api-key"));
+        return getParameters().containsKey("authorization") && getParameters().get("authorization").equals(Kynos.mainConfig.getString("api-key"));
+    }
+
+    public HashMap<String, String> getParameters() {
+        HashMap<String, String> params = UrlUtils.getParams(getUri().toString());
+
+        getJsonRequest().keySet().forEach(s -> {
+            params.put(s, String.valueOf(getJsonRequest().get(s)));
+        });
+
+        return params;
     }
 }
