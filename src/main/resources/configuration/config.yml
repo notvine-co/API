@@ -1,0 +1,7 @@
+# Welcome to the configuration file for Kynos (the simplest web api ever...) -- Ian
+
+# Server configuration
+server-port: 8080
+
+# Authorization key
+api-key: ""
