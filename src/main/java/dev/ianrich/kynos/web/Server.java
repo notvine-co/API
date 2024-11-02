@@ -115,11 +115,11 @@ public class Server {
                 Response response = new Response(socket);
 
                 String routeKey = String.format("%s:%s", request.getMethod(), request.getUri().getPath());
-                    Route route = routes.getOrDefault(routeKey, DefaultController.getPage());
-                    route.handle(request, response);
+                Route route = routes.getOrDefault(routeKey, DefaultController.getPage());
+                route.handle(request, response);
                 socket.close();
             } catch (Exception e) {
-                //throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
     }
