@@ -28,7 +28,7 @@ public class UrlUtils {
             skyrocket2 = skyrocket2 + d + " ";
         }
 
-        System.out.println("URL: " + url + ", PARAMS: " + skyrocket + ", " + skyrocket2);
+        //System.out.println("URL: " + url + ", PARAMS: " + skyrocket + ", " + skyrocket2); committed out debug message -- Ian
 
         return filtered;
     }
