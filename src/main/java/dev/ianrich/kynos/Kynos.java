@@ -2,7 +2,6 @@ package dev.ianrich.kynos;
 
 import com.google.gson.Gson;
 import dev.ianrich.kynos.controller.DefaultController;
-import dev.ianrich.kynos.controller.TestController;
 import dev.ianrich.kynos.task.CleanupTask;
 import dev.ianrich.kynos.util.ResourceUtils;
 import dev.ianrich.kynos.util.construct.ConfigFile;
@@ -60,7 +59,6 @@ public class Kynos {
 
         // Default Controller (no data)
         server.get("/", DefaultController.getPage());
-        server.get("/test", TestController.getPage());
 
     }
 
