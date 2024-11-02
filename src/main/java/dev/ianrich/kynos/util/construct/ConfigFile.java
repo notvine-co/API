@@ -11,6 +11,9 @@ public class ConfigFile {
 
     public ConfigFile(String configPath) throws IOException {
         loadConfig(configPath);
+
+        String[] splitPath = configPath.split("/");
+        System.out.println("Loaded configuration file \"" + splitPath[splitPath.length-1] + "\"");
     }
 
     private void loadConfig(String configPath) throws IOException {
@@ -29,7 +32,7 @@ public class ConfigFile {
     }
 
     public String getString(String key) {
-        return configMap.get(key);
+        return configMap.get(key).replace("\"", "");
     }
 
     public int getInteger(String key) {

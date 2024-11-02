@@ -37,6 +37,8 @@ public class Server {
     }
 
     public synchronized void start(int port) {
+        long start = System.currentTimeMillis();
+
         this.port = port;
 
         try {
@@ -51,6 +53,8 @@ public class Server {
             serverThread = new Thread(() -> init());
             serverThread.start();
         }
+
+        System.out.println("Server started! (" + (System.currentTimeMillis() - start) + "ms)");
     }
 
     public void stop() {
@@ -77,26 +81,31 @@ public class Server {
 
     public Server get(String path, Route route) {
         routes.put("GET:" + path, route);
+        System.out.println("Created GET route for \"" + path + "\"");
         return this;
     }
 
     public Server post(String path, Route route) {
         routes.put("POST:" + path, route);
+        System.out.println("Created POST route for \"" + path + "\"");
         return this;
     }
 
     public Server put(String path, Route route) {
         routes.put("PUT:" + path, route);
+        System.out.println("Created PUT route for \"" + path + "\"");
         return this;
     }
 
     public Server delete(String path, Route route) {
         routes.put("DELETE:" + path, route);
+        System.out.println("Created DELETE route for \"" + path + "\"");
         return this;
     }
 
     public Server patch(String path, Route route) {
         routes.put("PATCH:" + path, route);
+        System.out.println("Created PATCH route for \"" + path + "\"");
         return this;
     }
 

@@ -1,10 +1,9 @@
 # Kynos 🌧️
-Cloud API example for a project similar to Vine.
+Basic web application example for a similar website to Vine, I also wanted an alternative to Spring.
 <br>
 
 > [!CAUTION]
 > This project has only recently been started so I do not recommend using it in a production environment yet...
-
 <br>
 
 ### Contributing

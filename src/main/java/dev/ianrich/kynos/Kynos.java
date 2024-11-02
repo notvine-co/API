@@ -33,12 +33,13 @@ public class Kynos {
 
         // Where are we?
         path = Paths.get(new File(".").getAbsolutePath());
+        System.out.println("Found file path to Kynos: \"" + path + "\"");
 
         // Save defaults
         saveDefaults();
 
         // Load config
-        mainConfig = new ConfigFile("configuration/config.yml");
+        mainConfig = new ConfigFile("./config.yml");
 
         // Routes
         createRoutes();
@@ -65,6 +66,7 @@ public class Kynos {
 
         Timer timer = new Timer("API - Garbage Cleaner Timer");
         timer.schedule(new CleanupTask(), 600000L);
+        System.out.println("Started cleanup task.");
 
     }
 
