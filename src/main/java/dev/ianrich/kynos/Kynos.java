@@ -58,7 +58,7 @@ public class Kynos {
     private static void createRoutes() {
 
         // Default Controller (no data)
-        server.get("/", DefaultController.getPage());
+        server.get("/", DefaultController.getPage(), false);
 
     }
 

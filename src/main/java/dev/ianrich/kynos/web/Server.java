@@ -79,8 +79,8 @@ public class Server {
         }
     }
 
-    public Server get(String path, Route route) {
-        routes.put("GET:" + path, route);
+    public Server get(String path, Route route, Boolean identifier) {
+        routes.put("GET:" + path + (identifier ? "/{identifier}" : ""), route);
         System.out.println("Created GET route for \"" + path + "\"");
         return this;
     }
