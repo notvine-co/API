@@ -16,6 +16,7 @@ public class ContentUtils {
 
     public static String replaceDefaultVariables(Request request, String string) {
         return string.replace("%authorized%", String.valueOf(request.isAuthorized()))
-                     .replace("%request%", request.getJsonRequest().toString());
+                     .replace("%request%", request.getJsonRequest().toString())
+                     .replace("%url%", request.getUri().toString());
     }
 }
