@@ -2,6 +2,10 @@ package dev.ianrich.kynos;
 
 import com.google.gson.Gson;
 import dev.ianrich.kynos.controller.DefaultController;
+import dev.ianrich.kynos.controller.error.get.GetErrorPage;
+import dev.ianrich.kynos.controller.profile.get.GetProfile;
+import dev.ianrich.kynos.controller.profile.post.CreateProfile;
+import dev.ianrich.kynos.profile.ProfileHandler;
 import dev.ianrich.kynos.task.CleanupTask;
 import dev.ianrich.kynos.util.ResourceUtils;
 import dev.ianrich.kynos.util.construct.ConfigFile;
@@ -41,6 +45,9 @@ public class Kynos {
         // Load config
         mainConfig = new ConfigFile("./config.yml");
 
+        // Initiate
+        new ProfileHandler();
+
         // Routes
         createRoutes();
 
@@ -60,6 +67,13 @@ public class Kynos {
         // Default Controller (no data)
         server.get("/", DefaultController.getPage());
 
+        // Profiles
+        server.get("/profile", GetProfile.getPage());
+        server.post("/profile/create", CreateProfile.getPage());
+
+        // Error
+        server.get("/error", GetErrorPage.getPage());
+
     }
 
     private static void startGarbageCleanup() {
@@ -72,6 +86,13 @@ public class Kynos {
 
     private static void saveDefaults() throws IOException {
         ResourceUtils.saveResourceFromJar("/views/default.html", "views/default.html");
+
+        ResourceUtils.saveResourceFromJar("/views/error/error.html", "views/error/error.html");
+
+        ResourceUtils.saveResourceFromJar("/views/profile/create.html", "views/profile/create.html");
+        ResourceUtils.saveResourceFromJar("/views/profile/view.html", "views/profile/view.html");
+
+
         ResourceUtils.saveResourceFromJar("/configuration/config.yml", "./config.yml");
     }
 

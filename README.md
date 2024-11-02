@@ -1,5 +1,5 @@
-# Kynos 🌧️
-Basic web application example for a similar website to Vine, I also wanted an alternative to Spring.
+# API 🌧
+ I commited to the bit a bit too hard...
 <br>
 
 > [!CAUTION]

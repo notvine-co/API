@@ -1,6 +1,8 @@
 package dev.ianrich.kynos.util;
 
 import dev.ianrich.kynos.Kynos;
+import dev.ianrich.kynos.images.Frowny;
+import dev.ianrich.kynos.images.NotVine;
 import dev.ianrich.kynos.web.construct.Request;
 import dev.ianrich.kynos.web.construct.Response;
 
@@ -18,5 +20,10 @@ public class ContentUtils {
         return string.replace("%authorized%", String.valueOf(request.isAuthorized()))
                      .replace("%request%", request.getJsonRequest().toString())
                      .replace("%url%", request.getUri().toString());
+    }
+
+    public static String replaceImageVariables(String string){
+        return string.replace("%frowny%", "data:image/png;base64," + Frowny.data)
+                .replace("%logo%", "data:image/png;base64," + NotVine.data);
     }
 }
