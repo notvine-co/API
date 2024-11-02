@@ -19,7 +19,6 @@ public class DefaultController {
     };
 
     public static String getResponse(Request request, Response response) throws IOException {
-        return ContentUtils.getView("default")
-               .replace("%authorized%", String.valueOf(request.isAuthorized()));
+        return ContentUtils.replaceDefaultVariables(request, ContentUtils.getView("default"));
     }
 }
